@@ -31,14 +31,15 @@ export const styles = StyleSheet.create({
   // Texto do botão vermelho de limpar (reset):
   textoBotaoReset: { color: '#fff', fontWeight: '600' },
 
-  botaoParar: { backgroundColor: '#FF3B30' },
+  botaoParar: { backgroundColor: '#23c66c' },
+
+  botaoLimpar: { backgroundColor: '#FF3B30' },
 
   // Área central dinâmica onde o switch-case injeta o exemplo ativo:
   conteudoDinamico: { flex: 1, justifyContent: 'center' },
 
   // Caixa branca que envolve cada exemplo:
   caixa: { backgroundColor: '#fff', padding: 20, borderRadius: 12, boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' },
-  
   
   // Título interno de cada exemplo:
   subtitulo: { fontSize: 18, fontWeight: 'bold', marginBottom: 15, color: '#007AFF' },
