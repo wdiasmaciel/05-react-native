@@ -22,19 +22,16 @@ export default function TesteContador() {
 
     const atualizarContadorVariavel = () => {
         contadorVariavel++;
-
         mostrarValoresDosContadores();
     };
 
     const atualizarContadorEstado = () => {
         setContadorEstado(prev => prev + 1);
-
         mostrarValoresDosContadores();
     };
 
     const atualizarContadorRef = () => {
         contadorRef.current = contadorRef.current + 1;
-
         mostrarValoresDosContadores();
     };
 
@@ -51,9 +48,11 @@ export default function TesteContador() {
             <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorVariavel}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorVariavel</Text>
             </TouchableOpacity>
+
             <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorEstado}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorEstado</Text>
             </TouchableOpacity>
+            
             <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorRef}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorRef.current</Text>
             </TouchableOpacity>
