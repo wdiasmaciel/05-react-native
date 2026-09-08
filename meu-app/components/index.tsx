@@ -1,5 +1,5 @@
 // Importamos o gerenciador de estados básicos useState:
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // Importamos elementos de layout estruturais, botões clicáveis e barra de rolagem horizontal:
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
@@ -8,10 +8,12 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { styles } from '../styles/styles';
 
 // Importação dos componentes de exemplo:
-import Formulario from './exemplo/Formulario';
-import Modal from './exemplo/Modal';
-import Audio from './exemplo/Audio';
-import Animacao from './exemplo/Animacao';
+import TesteContador from './exemplos/TesteContador';
+import Formulario1 from './exemplos/Formulario1';
+import Formulario2 from './exemplos/Formulario2';
+import Formulario3 from './exemplos/Formulario3';
+import Rolagem from './exemplos/Rolagem';
+import Cronometro from './exemplos/Cronometro';
 
 // Componente principal (Tela de entrada principal):
 export default function App() {
@@ -22,19 +24,18 @@ export default function App() {
   const renderizarExemplo = () => {
     switch (opcaoSelecionada) {
       case 1:
-        // Caso o estado seja 1, renderiza o formulário de foco automático:
-        return <Formulario />;
+        return <TesteContador/>;
       case 2:
-        // Caso o estado seja 2, renderiza a tela com o modal:
-        return <Modal />;
+        return <Formulario1 />;
       case 3:
-        // Caso o estado seja 3, renderiza o controlador de áudio simulado:
-        return <Audio />;
+        return <Formulario2 />;
       case 4:
-        // Caso o estado seja 4, renderiza o bloco com o quadrado animado:
-        return <Animacao />;
+        return <Formulario3 />;
+      case 5:
+        return <Rolagem />;
+      case 6:
+        return <Cronometro />;
       default:
-        // Caso padrão (estado igual a 0), exibe a mensagem de boas-vindas:
         return (
           <View style={styles.boasVindas}>
             <Text style={styles.textoHome}>
