@@ -108,7 +108,7 @@ export default function Formulario() {
                     disabled={enviado || campoAtual === 'senha'}
                     onPress={avancarCampo}
                 >
-                    <Text style={styles.textoBotaoExemplo}>Avançar</Text>
+                    <Text style={styles.textoBotaoAtivo}>Avançar</Text>
                 </TouchableOpacity>
 
             {/* 
@@ -120,7 +120,7 @@ export default function Formulario() {
                 disabled={enviado}
                 onPress={tratarEnvio}
             >
-                <Text style={styles.textoBotaoExemplo}>
+                <Text style={styles.textoBotaoAtivo}>
                     {enviado ? "Cadastro Enviado!" : "Enviar Cadastro"}
                 </Text>
             </TouchableOpacity>

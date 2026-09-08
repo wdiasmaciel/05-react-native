@@ -29,7 +29,7 @@ export default function Rolagem() {
                 style={[styles.botaoAtivo, styles.botaoContador]}
                 onPress={adicionarItem}
             >
-                <Text style={styles.textoBotaoExemplo}>Adicionar e Rolar pro Fim</Text>
+                <Text style={styles.textoBotaoAtivo}>Adicionar e Rolar pro Fim</Text>
             </TouchableOpacity>
         </View>
     );

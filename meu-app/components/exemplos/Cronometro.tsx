@@ -53,24 +53,24 @@ export default function Cronometro() {
 
     return (
         <View style={styles.caixa}>
-            <Text style={styles.textoCronometro}>Tempo: {segundos}s</Text>
+            <Text style={[styles.texto, styles.textoMaior]}>Tempo: {segundos}s</Text>
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.botaoContador]}
                 onPress={iniciarCronometro}
             >
-                <Text style={styles.textoBotaoExemplo}>Iniciar</Text>
+                <Text style={styles.textoBotaoAtivo}>Iniciar</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.botaoContador, styles.botaoParar]}
                 onPress={pararCronometro}
             >
-                <Text style={styles.textoBotaoExemplo}>Parar</Text>
+                <Text style={styles.textoBotaoAtivo}>Parar</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.botaoContador, styles.botaoLimpar]}
                 onPress={limparCronometro}
             >
-                <Text style={styles.textoBotaoExemplo}>Limpar</Text>
+                <Text style={styles.textoBotaoAtivo}>Limpar</Text>
             </TouchableOpacity>
         </View>
     );

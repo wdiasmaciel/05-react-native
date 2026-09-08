@@ -44,9 +44,9 @@ export default function TesteContador() {
             {/* Texto de cabeçalho do exemplo */}
             <Text style={styles.subtitulo}>Contadores</Text>
 
-            <Text style={styles.textoContador}>contadorVariavel: {contadorVariavel}</Text>
-            <Text style={styles.textoContador}>contadorEstado: {contadorEstado}</Text>
-            <Text style={styles.textoContador}>contadorRef.current: {contadorRef.current}</Text>
+            <Text style={[styles.texto, styles.textoMaior]}>contadorVariavel: {contadorVariavel}</Text>
+            <Text style={[styles.texto, styles.textoMaior]}>contadorEstado: {contadorEstado}</Text>
+            <Text style={[styles.texto, styles.textoMaior]}>contadorRef.current: {contadorRef.current}</Text>
 
             <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorVariavel}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorVariavel</Text>

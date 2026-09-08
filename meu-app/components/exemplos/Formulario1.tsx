@@ -23,7 +23,7 @@ export default function Formulario1() {
                 style={[styles.botaoAtivo, styles.botaoContador]}
                 onPress={tratarFoco}
             >
-                <Text style={styles.textoBotaoExemplo}>Focar no Input</Text>
+                <Text style={styles.textoBotaoAtivo}>Focar no Input</Text>
             </TouchableOpacity>
         </View>
     );
