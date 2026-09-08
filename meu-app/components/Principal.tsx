@@ -1,10 +1,7 @@
-// Importamos o gerenciador de estados básicos useState:
 import { useState } from 'react';
-
-// Importamos elementos de layout estruturais, botões clicáveis e barra de rolagem horizontal:
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
-// Importamos a folha de estilos externa compartilhada:
+// Importação da folha de estilos externa compartilhada:
 import { styles } from '../styles/styles';
 
 // Importação dos componentes de exemplo:
@@ -17,8 +14,9 @@ import Cronometro from './exemplos/Cronometro';
 
 // Componente principal (Tela de entrada principal):
 export default function Principal() {
-  // Estado numérico que armazena qual exemplo está ativo na tela no momento (0 significa nenhum/home)
+  // Estado numérico que armazena qual exemplo está ativo na tela no momento (0 significa nenhum/home):
   const [opcaoSelecionada, setOpcaoSelecionada] = useState<number>(0);
+  
   const opcoes = [
     { numero: 1, titulo: 'Contadores' },
     { numero: 2, titulo: 'Foco por botão' },
@@ -32,7 +30,7 @@ export default function Principal() {
   const renderizarExemplo = () => {
     switch (opcaoSelecionada) {
       case 1:
-        return <TesteContador/>;
+        return <TesteContador />;
       case 2:
         return <Formulario1 />;
       case 3:
@@ -83,7 +81,7 @@ export default function Principal() {
 
           </TouchableOpacity>
         ))}
-        
+
         {/* Renderização Condicional: se alguma opção estiver aberta (diferente de 0), exibe o botão vermelho de limpar (reset): */}
         {opcaoSelecionada !== 0 && (
           <TouchableOpacity style={styles.botaoReset} onPress={() => setOpcaoSelecionada(0)}>

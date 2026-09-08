@@ -1,7 +1,5 @@
-// Importamos a ferramenta que cria os estilos do React Native:
 import { StyleSheet } from 'react-native';
 
-// Criamos e exportamos o objeto de estilos para ser usado em todos os arquivos:
 export const styles = StyleSheet.create({
   // Estilo do container principal da tela principal:
   container: { flex: 1, backgroundColor: '#f0f2f5', paddingTop: 60, paddingHorizontal: 20 },
@@ -13,7 +11,7 @@ export const styles = StyleSheet.create({
   menuHorizontal: { flexDirection: 'row', maxHeight: 50, marginBottom: 20 },
 
   // Estilo padrão de cada botão não selecionado:
-  botaoMenu: { backgroundColor: '#fff', width: 140, paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8, marginRight: 10, borderWidth: 1, borderColor: '#ddd', height: 40, alignItems: 'center', justifyContent: 'center' },
+  botaoMenu: { backgroundColor: '#fff', width: 170, paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8, marginRight: 10, borderWidth: 1, borderColor: '#ddd', height: 40, alignItems: 'center', justifyContent: 'center' },
 
   // Estilo aplicado ao botão que está selecionado no momento:
   botaoAtivo: { backgroundColor: '#007AFF', borderColor: '#007AFF' },
@@ -22,10 +20,7 @@ export const styles = StyleSheet.create({
   textoBotaoMenu: { color: '#333', fontWeight: '600' },
 
   // Texto do botão quando ele estiver ativo (selecionado):
-  textoBotaoAtivo: { color: '#fff' },
-
-  // Texto dos botões dos exemplos:
-  textoBotaoExemplo: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  textoBotaoAtivo: { color: '#fff', fontSize: 16, fontWeight: '600' },
 
   // Espaçamento entre os botões do exemplo de contadores:
   botaoContador: { width: '100%', minHeight: 44, paddingHorizontal: 16, paddingVertical: 12, borderRadius: 6, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
