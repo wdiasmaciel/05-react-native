@@ -26,7 +26,7 @@ export default function Rolagem() {
                 style={styles.lista}
             />
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo]}
                 onPress={adicionarItem}
             >
                 <Text style={styles.textoBotaoAtivo}>Adicionar e Rolar pro Fim</Text>

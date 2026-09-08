@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
   textoBotaoAtivo: { color: '#fff', fontSize: 16, fontWeight: '600' },
 
   // Espaçamento entre os botões do exemplo de contadores:
-  botaoContador: { width: '100%', minHeight: 44, paddingHorizontal: 16, paddingVertical: 12, borderRadius: 6, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
+  configBotaoAtivo: { width: '100%', minHeight: 44, paddingHorizontal: 16, paddingVertical: 12, borderRadius: 6, alignItems: 'center', justifyContent: 'center', marginBottom: 12 },
   
   // Botão vermelho de limpar a seleção (reset) e voltar para a tela principal (home):
   botaoReset: { backgroundColor: '#FF3B30', width: 140, paddingHorizontal: 16, paddingVertical: 10, borderRadius: 8, height: 40, alignItems: 'center', justifyContent: 'center' },

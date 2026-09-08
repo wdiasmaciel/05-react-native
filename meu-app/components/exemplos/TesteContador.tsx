@@ -45,15 +45,15 @@ export default function TesteContador() {
             <Text style={[styles.texto, styles.textoMaior]}>contadorEstado: {contadorEstado}</Text>
             <Text style={[styles.texto, styles.textoMaior]}>contadorRef.current: {contadorRef.current}</Text>
 
-            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorVariavel}>
+            <TouchableOpacity style={[styles.botaoAtivo, styles.configBotaoAtivo]} onPress={atualizarContadorVariavel}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorVariavel</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorEstado}>
+            <TouchableOpacity style={[styles.botaoAtivo, styles.configBotaoAtivo]} onPress={atualizarContadorEstado}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorEstado</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorRef}>
+            <TouchableOpacity style={[styles.botaoAtivo, styles.configBotaoAtivo]} onPress={atualizarContadorRef}>
                 <Text style={styles.textoBotaoAtivo}>Aumentar contadorRef.current</Text>
             </TouchableOpacity>
         </View>

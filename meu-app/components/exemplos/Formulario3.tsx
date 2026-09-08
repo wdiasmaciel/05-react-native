@@ -104,7 +104,7 @@ export default function Formulario() {
             />
 
                 <TouchableOpacity
-                    style={[styles.botaoAtivo, styles.botaoContador]}
+                    style={[styles.botaoAtivo, styles.configBotaoAtivo]}
                     disabled={enviado || campoAtual === 'senha'}
                     onPress={avancarCampo}
                 >
@@ -116,7 +116,7 @@ export default function Formulario() {
               * Se enviado for true, o botão muda de título e cor.
               */}
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo]}
                 disabled={enviado}
                 onPress={tratarEnvio}
             >

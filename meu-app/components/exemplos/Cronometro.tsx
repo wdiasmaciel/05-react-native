@@ -55,19 +55,19 @@ export default function Cronometro() {
         <View style={styles.caixa}>
             <Text style={[styles.texto, styles.textoMaior]}>Tempo: {segundos}s</Text>
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo]}
                 onPress={iniciarCronometro}
             >
                 <Text style={styles.textoBotaoAtivo}>Iniciar</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador, styles.botaoParar]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo, styles.botaoParar]}
                 onPress={pararCronometro}
             >
                 <Text style={styles.textoBotaoAtivo}>Parar</Text>
             </TouchableOpacity>
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador, styles.botaoLimpar]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo, styles.botaoLimpar]}
                 onPress={limparCronometro}
             >
                 <Text style={styles.textoBotaoAtivo}>Limpar</Text>

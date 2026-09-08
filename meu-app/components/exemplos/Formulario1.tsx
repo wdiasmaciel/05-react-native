@@ -19,8 +19,9 @@ export default function Formulario1() {
                 style={styles.input}
                 placeholder="Clique no botão para focar aqui."
             />
+
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.botaoContador]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo]}
                 onPress={tratarFoco}
             >
                 <Text style={styles.textoBotaoAtivo}>Focar no Input</Text>
