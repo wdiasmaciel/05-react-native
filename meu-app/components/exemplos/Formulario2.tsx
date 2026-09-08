@@ -4,7 +4,6 @@ import { View, TextInput } from 'react-native';
 import { styles } from '../../styles/styles';
 
 export default function Formulario2() {
-    const primeiroInputRef = useRef<TextInput>(null);
     const segundoInputRef = useRef<TextInput>(null);
 
     const tratarAlteracaoDeTexto = (text: string) => {
@@ -17,9 +16,9 @@ export default function Formulario2() {
     return (
         <View style={styles.caixa}>
             <TextInput
-                ref={primeiroInputRef}
                 style={styles.input}
                 placeholder="Informe o ano (com 4 dígitos)"
+                autoFocus
                 maxLength={4}
                 keyboardType="numeric"
                 onChangeText={tratarAlteracaoDeTexto}
