@@ -16,7 +16,7 @@ import Rolagem from './exemplos/Rolagem';
 import Cronometro from './exemplos/Cronometro';
 
 // Componente principal (Tela de entrada principal):
-export default function App() {
+export default function Principal() {
   // Estado numérico que armazena qual exemplo está ativo na tela no momento (0 significa nenhum/home)
   const [opcaoSelecionada, setOpcaoSelecionada] = useState<number>(0);
 
@@ -56,8 +56,8 @@ export default function App() {
       {/* Menu Horizontal deslizável contendo os botões de seleção de exemplos: */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.menuHorizontal}>
 
-        {/* Mapeia um array numérico de 1 a 4 para desenhar de forma dinâmica os 4 botões na tela: */}
-        {[1, 2, 3, 4].map((num) => (
+        {/* Mapeia um array numérico de 1 a 6 para desenhar de forma dinâmica os 6 botões na tela: */}
+        {[1, 2, 3, 4, 5, 6].map((num) => (
           <TouchableOpacity
             key={num} // Atribui uma chave única exigida pelo React para cada item mapeado.
             style={[
