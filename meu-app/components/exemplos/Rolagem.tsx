@@ -10,7 +10,7 @@ export default function Rolagem() {
     const adicionarItem = () => {
         setItens((vetor) => [...vetor, `Mensagem ${vetor.length + 1}`]);
 
-        // Aguarda o próximo ciclo para garantir que o item já foi renderizado na tela:
+        // Aguarda para garantir que o item já foi renderizado na tela:
         setTimeout(() => {
             flatListRef.current?.scrollToEnd({ animated: true });
         }, 50);
@@ -23,7 +23,7 @@ export default function Rolagem() {
                 data={itens}
                 keyExtractor={(item) => item}
                 renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-                style={styles.lista}
+                style={styles.caixaRolagem}
             />
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.configBotaoAtivo]}
