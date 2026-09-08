@@ -1,5 +1,7 @@
-import { useState, useRef } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { useState, useRef, useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+
+import { styles } from '../../styles/styles';
 
 export default function Cronometro() {
     const [segundos, setSegundos] = useState<number>(0);
@@ -8,8 +10,12 @@ export default function Cronometro() {
      * O useRef armazena o ID do timer e não causa re-render ao mudar.
      * Usando ReturnType<typeof setInterval>, você diz ao TypeScript: 
      * "Pegue o tipo exato do que a função setInterval retorna neste ambiente".
-     */    
+     */
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+    useEffect(() => {
+        console.log(`timerRef.current: ${timerRef.current}, Segundos: ${segundos}`);
+    }, [segundos]);
 
     const iniciarCronometro = () => {
         if (timerRef.current !== null)
@@ -36,16 +42,36 @@ export default function Cronometro() {
         }
     };
 
+    const limparCronometro = () => {
+        if (timerRef.current !== null) {
+            // Destruimos o timer ativo usando o ID armazenado na referência:
+            clearInterval(timerRef.current);
+        }
+        timerRef.current = null; // Reseta a referência.
+        setSegundos(0); // Reseta o contador de segundos.
+    };
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.texto}>Tempo: {segundos}s</Text>
-            <Button title="Iniciar" onPress={iniciarCronometro} />
-            <Button title="Parar" onPress={pararCronometro} color="red" />
+        <View style={styles.caixa}>
+            <Text style={styles.textoCronometro}>Tempo: {segundos}s</Text>
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador]}
+                onPress={iniciarCronometro}
+            >
+                <Text style={styles.textoBotaoExemplo}>Iniciar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador, styles.botaoParar]}
+                onPress={pararCronometro}
+            >
+                <Text style={styles.textoBotaoExemplo}>Parar</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador, styles.botaoLimpar]}
+                onPress={limparCronometro}
+            >
+                <Text style={styles.textoBotaoExemplo}>Limpar</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 10 },
-    texto: { fontSize: 32, marginBottom: 20 },
-});

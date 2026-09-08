@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react';
 
 // Importamos os componentes visuais nativos do React Native:
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 // Importamos o objeto de estilos compartilhado:
 import { styles } from '../../styles/styles';
@@ -28,6 +28,17 @@ export default function Formulario() {
 
     // useState para "simular" o envo dos dados para o servidor:
     const [enviado, setEnviado] = useState<boolean>(false);
+    const [campoAtual, setCampoAtual] = useState<'nome' | 'email' | 'senha'>('nome');
+
+    const avancarCampo = () => {
+        if (campoAtual === 'nome') {
+            setCampoAtual('email');
+            emailInputRef.current?.focus();
+        } else if (campoAtual === 'email') {
+            setCampoAtual('senha');
+            senhaInputRef.current?.focus();
+        }
+    };
 
     const tratarEnvio = () => {
         if (nome.trim() === '' || email.trim() === '' || senha.trim() === '') {
@@ -59,12 +70,12 @@ export default function Formulario() {
                 style={styles.input} // Aplica o estilo padrão de inputs.
                 placeholder="Nome (Pressione Avançar)" // Texto de fundo.
                 onPressIn={() => setEnviado(false)}
+                onFocus={() => setCampoAtual('nome')}
                 returnKeyType="next" // Modifica o botão de conclusão do teclado do celular para "Avançar".
                 // Evento disparado quando o usuário clica no botão "Avançar" do teclado:
                 // Ele acessa a referência do email e dispara o método nativo focus() para abrir o teclado lá.
                 onSubmitEditing={() => emailInputRef.current?.focus()}
             />
-
             {/* Input de E-mail (Segundo Campo): */}
             <TextInput
                 value={email}
@@ -73,12 +84,12 @@ export default function Formulario() {
                 style={styles.input} // Aplica o estilo padrão de inputs.
                 placeholder="E-mail (Pressione Avançar)" // Texto de fundo.
                 onPressIn={() => setEnviado(false)}
+                onFocus={() => setCampoAtual('email')}
                 keyboardType="email-address" // Configura o teclado para o formato de e-mail (com @ visível).
                 returnKeyType="next" // Modifica o botão de conclusão do teclado para "Avançar".
                 // Evento disparado ao avançar: move o cursor diretamente para o campo de senha.
                 onSubmitEditing={() => senhaInputRef.current?.focus()}
             />
-
             {/* Input de Senha (Terceiro e Ùltimo Campo): */}
             <TextInput
                 value={senha}
@@ -87,20 +98,32 @@ export default function Formulario() {
                 style={styles.input} // Aplica o estilo padrão de inputs.
                 placeholder="Senha (Concluir)" // Texto de fundo.
                 onPressIn={() => setEnviado(false)}
+                   onFocus={() => setCampoAtual('senha')}
                 secureTextEntry // Oculta os caracteres digitados substituindo por bolinhas por segurança.
                 returnKeyType="done" // Modifica o botão de conclusão do teclado para "Concluído/Pronto".
             />
+
+                <TouchableOpacity
+                    style={[styles.botaoAtivo, styles.botaoContador]}
+                    disabled={enviado || campoAtual === 'senha'}
+                    onPress={avancarCampo}
+                >
+                    <Text style={styles.textoBotaoExemplo}>Avançar</Text>
+                </TouchableOpacity>
 
             {/* 
               * Botão Final de Submissão do Formulário: 
               * Se enviado for true, o botão muda de título e cor.
               */}
-            <Button
-                title={enviado ? "Cadastro Enviado!" : "Enviar Cadastro"}
-                color={enviado ? "#34C759" : "#007AFF"}
-                disabled={enviado} // Desabilita para indicar que acabou
-                onPress={() => setEnviado(tratarEnvio())}
-            />
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador]}
+                disabled={enviado}
+                onPress={tratarEnvio}
+            >
+                <Text style={styles.textoBotaoExemplo}>
+                    {enviado ? "Cadastro Enviado!" : "Enviar Cadastro"}
+                </Text>
+            </TouchableOpacity>
         </View>
     );
 }

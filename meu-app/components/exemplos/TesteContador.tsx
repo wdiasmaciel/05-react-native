@@ -1,55 +1,62 @@
 import { useState, useRef } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+
+// Importamos o objeto de estilos compartilhado:
+import { styles } from '../../styles/styles';
 
 export default function TesteContador() {
     let contadorVariavel = 0;
     const [contadorEstado, setContadorEstado] = useState<number>(0);
     const contadorRef = useRef(0);
 
+    const mostrarValoresDosContadores = () => {
+        console.log(`contadorVariavel: ${contadorVariavel}`);
+        console.log(`contadorEstado: ${contadorEstado}`);
+        console.log(`contadorRef.current: ${contadorRef.current}`);
+        console.log("");
+    };
+
     // Esses logs rodam TODA VEZ que o componente é atualizado (redesenhado) na tela:
     console.log("O componente foi atualizado (redesenhado) na tela!");
-    console.log(`contadorVariavel: ${contadorVariavel}`);
-    console.log(`contadorEstado: ${contadorEstado}`);
-    console.log(`contadorRef.current: ${contadorRef.current}`);
+    mostrarValoresDosContadores();
 
     const atualizarContadorVariavel = () => {
         contadorVariavel++;
 
-        console.log(`contadorVariavel: ${contadorVariavel}`);
-        console.log(`contadorEstado: ${contadorEstado}`);
-        console.log(`contadorRef.current: ${contadorRef.current}`);
+        mostrarValoresDosContadores();
     };
 
     const atualizarContadorEstado = () => {
         setContadorEstado(prev => prev + 1);
 
-        console.log(`contadorVariavel: ${contadorVariavel}`);
-        console.log(`contadorEstado: ${contadorEstado}`);
-        console.log(`contadorRef.current: ${contadorRef.current}`);
+        mostrarValoresDosContadores();
     };
 
     const atualizarContadorRef = () => {
         contadorRef.current = contadorRef.current + 1;
 
-        console.log(`contadorVariavel: ${contadorVariavel}`);
-        console.log(`contadorEstado: ${contadorEstado}`);
-        console.log(`contadorRef.current: ${contadorRef.current}`);
+        mostrarValoresDosContadores();
     };
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.texto}>contadorVariavel: {contadorVariavel}</Text>
-            <Text style={styles.texto}>contadorEstado: {contadorEstado}</Text>
-            <Text style={styles.texto}>contadorRef.current: {contadorRef.current}</Text>
+        // Caixa branca externa que agrupa o exemplo:
+        <View style={styles.caixa}>
+            {/* Texto de cabeçalho do exemplo */}
+            <Text style={styles.subtitulo}>Contadores</Text>
 
-            <Button title="Aumentar contadorVariavel" onPress={atualizarContadorVariavel} />
-            <Button title="Aumentar contadorEstado" onPress={atualizarContadorEstado} />
-            <Button title="Aumentar contadorRef.current" onPress={atualizarContadorRef} color="green" />
+            <Text style={styles.textoContador}>contadorVariavel: {contadorVariavel}</Text>
+            <Text style={styles.textoContador}>contadorEstado: {contadorEstado}</Text>
+            <Text style={styles.textoContador}>contadorRef.current: {contadorRef.current}</Text>
+
+            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorVariavel}>
+                <Text style={styles.textoBotaoExemplo}>Aumentar contadorVariavel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorEstado}>
+                <Text style={styles.textoBotaoExemplo}>Aumentar contadorEstado</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.botaoAtivo, styles.botaoContador]} onPress={atualizarContadorRef}>
+                <Text style={styles.textoBotaoExemplo}>Aumentar contadorRef.current</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 15 },
-    texto: { fontSize: 22 },
-});

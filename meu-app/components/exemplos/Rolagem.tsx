@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
-import { StyleSheet, View, Text, FlatList, Button } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+
+import { styles } from '../../styles/styles';
 
 export default function Rolagem() {
     const [itens, setItens] = useState<string[]>(['Mensagem 1', 'Mensagem 2', 'Mensagem 3']);
@@ -15,7 +17,7 @@ export default function Rolagem() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.caixa, styles.caixaRolagem]}>
             <FlatList
                 ref={flatListRef}
                 data={itens}
@@ -23,13 +25,12 @@ export default function Rolagem() {
                 renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
                 style={styles.lista}
             />
-            <Button title="Adicionar e Rolar pro Fim" onPress={adicionarItem} />
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador]}
+                onPress={adicionarItem}
+            >
+                <Text style={styles.textoBotaoExemplo}>Adicionar e Rolar pro Fim</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1, padding: 20, paddingTop: 50 },
-    lista: { flex: 1, marginBottom: 20 },
-    item: { padding: 20, backgroundColor: '#f9c2ff', marginBottom: 10, fontSize: 18 },
-});

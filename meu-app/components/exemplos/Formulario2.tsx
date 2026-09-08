@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
+
+import { styles } from '../../styles/styles';
 
 export default function Formulario2() {
     const primeiroInputRef = useRef<TextInput>(null);
@@ -13,7 +15,7 @@ export default function Formulario2() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.caixa}>
             <TextInput
                 ref={primeiroInputRef}
                 style={styles.input}
@@ -32,8 +34,3 @@ export default function Formulario2() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'center', padding: 20 },
-    input: { height: 40, borderColor: 'gray', borderWidth: 1, marginBottom: 15, paddingHorizontal: 10 },
-});

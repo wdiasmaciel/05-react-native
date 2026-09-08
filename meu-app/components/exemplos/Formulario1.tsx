@@ -1,5 +1,7 @@
 import { useRef } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+
+import { styles } from '../../styles/styles';
 
 export default function Formulario1() {
     // Criamos a referência com valor inicial null:
@@ -11,30 +13,18 @@ export default function Formulario1() {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.caixa}>
             <TextInput
                 ref={inputRef} // Associamos a referência ao TextInput.
                 style={styles.input}
                 placeholder="Clique no botão para focar aqui."
             />
-            <Button title="Focar no Input" onPress={tratarFoco} />
+            <TouchableOpacity
+                style={[styles.botaoAtivo, styles.botaoContador]}
+                onPress={tratarFoco}
+            >
+                <Text style={styles.textoBotaoExemplo}>Focar no Input</Text>
+            </TouchableOpacity>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    input: {
-        width: '100%',
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 10,
-        paddingHorizontal: 10,
-    },
-});

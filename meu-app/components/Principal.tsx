@@ -19,6 +19,14 @@ import Cronometro from './exemplos/Cronometro';
 export default function Principal() {
   // Estado numérico que armazena qual exemplo está ativo na tela no momento (0 significa nenhum/home)
   const [opcaoSelecionada, setOpcaoSelecionada] = useState<number>(0);
+  const opcoes = [
+    { numero: 1, titulo: 'Contadores' },
+    { numero: 2, titulo: 'Foco por botão' },
+    { numero: 3, titulo: 'Foco automático' },
+    { numero: 4, titulo: 'Formulário' },
+    { numero: 5, titulo: 'Rolagem' },
+    { numero: 6, titulo: 'Cronômetro' },
+  ];
 
   // Função com switch-case que lê o estado atual e decide qual componente renderizar dinamicamente na tela:
   const renderizarExemplo = () => {
@@ -56,21 +64,21 @@ export default function Principal() {
       {/* Menu Horizontal deslizável contendo os botões de seleção de exemplos: */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.menuHorizontal}>
 
-        {/* Mapeia um array numérico de 1 a 6 para desenhar de forma dinâmica os 6 botões na tela: */}
-        {[1, 2, 3, 4, 5, 6].map((num) => (
+        {/* Mapeia as opções para desenhar os botões do menu: */}
+        {opcoes.map(({ numero, titulo }) => (
           <TouchableOpacity
-            key={num} // Atribui uma chave única exigida pelo React para cada item mapeado.
+            key={numero} // Atribui uma chave única exigida pelo React para cada item mapeado.
             style={[
               styles.botaoMenu, // Aplica o design básico do botão.
-              opcaoSelecionada === num && styles.botaoAtivo // Se este botão for o selecionado, injeta a cor azul de ativo.
+              opcaoSelecionada === numero && styles.botaoAtivo // Se este botão for o selecionado, injeta a cor azul de ativo.
             ]}
             // Ao clicar no botão, atualiza o estado para o número correspondente, disparando o switch-case:
-            onPress={() => setOpcaoSelecionada(num)}
+            onPress={() => setOpcaoSelecionada(numero)}
           >
 
             {/* Texto exibido dentro do botão: */}
-            <Text style={[styles.textoBotaoMenu, opcaoSelecionada === num && styles.textoBotaoAtivo]}>
-              Exemplo {num}
+            <Text style={[styles.textoBotaoMenu, opcaoSelecionada === numero && styles.textoBotaoAtivo]}>
+              {titulo}
             </Text>
 
           </TouchableOpacity>
