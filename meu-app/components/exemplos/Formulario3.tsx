@@ -39,18 +39,16 @@ export default function Formulario() {
     const tratarEnvio = () => {
         if (nome.trim() === '' || email.trim() === '' || senha.trim() === '') {
             console.log('Por favor, preencha todos os campos!');
-            return false;
+            return;
         }
 
-        //setEnviado(true);
+        setEnviado(true);
         console.log('Enviado: ', { nome, email, senha });
 
         // Limpa os campos do formulário:
         setNome('');
         setEmail('');
         setSenha('');
-
-        return true;
     };
 
     return (
