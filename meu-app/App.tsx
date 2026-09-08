@@ -3,7 +3,7 @@ import Principal from './components/Principal';
 
 export default function App() {
   return (
-    <> // Fragmento para permitir múltiplos elementos sem criar uma View extra.
+    <> {/* Fragmento para permitir o retorno de múltiplos elementos sem criar uma View extra.*/}
       <Principal />
       <StatusBar style="auto" />
     </>
