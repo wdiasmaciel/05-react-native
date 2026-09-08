@@ -6,6 +6,12 @@ import { styles } from '../../styles/styles';
 
 export default function Formulario() {
     /*
+     * Criamos uma referência para o TextInput de nome. 
+     * Indicamos que ela guarda um TextInput e inicia com null.
+     */
+    const nomeInputRef = useRef<TextInput>(null);
+
+    /*
      * Criamos uma referência para o TextInput de e-mail. 
      * Indicamos que ela guarda um TextInput e inicia com null.
      */
@@ -24,20 +30,25 @@ export default function Formulario() {
 
     // useState para "simular" o envo dos dados para o servidor:
     const [enviado, setEnviado] = useState<boolean>(false);
-    const [campoAtual, setCampoAtual] = useState<'nome' | 'email' | 'senha'>('nome');
+    const [campoAtual, setCampoAtual] = useState<'nome' | 'email' | 'senha' | 'cadastro'>('nome');
 
     const avancarCampo = () => {
-        if (campoAtual === 'nome') {
+        if (enviado) {
+            setEnviado(false);
+            setCampoAtual('nome');
+            nomeInputRef.current?.focus();
+        } else if (campoAtual === 'nome') {
             setCampoAtual('email');
             emailInputRef.current?.focus();
         } else if (campoAtual === 'email') {
             setCampoAtual('senha');
             senhaInputRef.current?.focus();
         } else if (campoAtual === 'senha') {
+            setCampoAtual('cadastro');
+        } else {
             setCampoAtual('nome');
             // Retorna o foco para o primeiro campo:
-            emailInputRef.current?.blur();
-            senhaInputRef.current?.blur();
+            nomeInputRef.current?.focus();
         }
     };
 
@@ -69,6 +80,7 @@ export default function Formulario() {
                     setNome(texto);
                     setEnviado(false);
                 }}
+                ref={nomeInputRef} // Vincula este campo à referência 'nomeInputRef'.
                 style={styles.input} 
                 placeholder="Nome (Pressione Avançar)" 
                 onPressIn={() => setEnviado(false)}
@@ -117,6 +129,7 @@ export default function Formulario() {
             {/* 
               * Botão de Submissão do Formulário: 
               * Se enviado for true, o botão muda de título.
+              * OBS: TouchableOpacity não possui .focus().
               */}
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.configBotaoAtivo, enviado && styles.botaoDesativado]}
@@ -130,7 +143,6 @@ export default function Formulario() {
 
             <TouchableOpacity
                 style={[styles.botaoAtivo, styles.configBotaoAtivo]}
-                disabled={enviado || campoAtual === 'senha'}
                 onPress={avancarCampo}
             >
                 <Text style={styles.textoBotaoAtivo}>Avançar</Text>
