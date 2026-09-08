@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
   // Texto dos valores exibidos no exemplo de contadores:
   textoMaior: { fontSize: 20 },
 
-  // Lista e itens do exemplo de rolagem:
+  // Lista e itens do exemplo de caixa de rolagem:
   caixaRolagem: { flex: 1, marginBottom: 15 },
   item: { padding: 12, backgroundColor: '#f9f9f9', marginBottom: 10, fontSize: 16 },
 
