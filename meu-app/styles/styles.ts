@@ -35,6 +35,8 @@ export const styles = StyleSheet.create({
 
   botaoLimpar: { backgroundColor: '#FF3B30' },
 
+  botaoDesativado: { backgroundColor: '#bbb', borderColor: '#bbb' },
+
   // Área central dinâmica onde o switch-case injeta o exemplo ativo:
   conteudoDinamico: { flex: 1, justifyContent: 'center' },
 

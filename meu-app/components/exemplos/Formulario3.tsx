@@ -33,6 +33,11 @@ export default function Formulario() {
         } else if (campoAtual === 'email') {
             setCampoAtual('senha');
             senhaInputRef.current?.focus();
+        } else if (campoAtual === 'senha') {
+            setCampoAtual('nome');
+            // Retorna o foco para o primeiro campo:
+            emailInputRef.current?.blur();
+            senhaInputRef.current?.blur();
         }
     };
 
@@ -60,7 +65,10 @@ export default function Formulario() {
             {/* Input de Nome (Primeiro Campo): */}
             <TextInput
                 value={nome}
-                onChangeText={setNome}
+                onChangeText={(texto) => {
+                    setNome(texto);
+                    setEnviado(false);
+                }}
                 style={styles.input} 
                 placeholder="Nome (Pressione Avançar)" 
                 onPressIn={() => setEnviado(false)}
@@ -75,7 +83,10 @@ export default function Formulario() {
             {/* Input de E-mail (Segundo Campo): */}
             <TextInput
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(texto) => {
+                    setEmail(texto);
+                    setEnviado(false);
+                }}
                 ref={emailInputRef} // Vincula este campo à referência 'emailInputRef'.
                 style={styles.input} 
                 placeholder="E-mail (Pressione Avançar)" 
@@ -90,7 +101,10 @@ export default function Formulario() {
             {/* Input de Senha (Terceiro e Ùltimo Campo): */}
             <TextInput
                 value={senha}
-                onChangeText={setSenha}
+                onChangeText={(texto) => {
+                    setSenha(texto);
+                    setEnviado(false);
+                }}
                 ref={senhaInputRef} // Vincula este campo com a referência 'senhaInputRef'.
                 style={styles.input} 
                 placeholder="Senha (Concluir)" 
@@ -105,7 +119,7 @@ export default function Formulario() {
               * Se enviado for true, o botão muda de título.
               */}
             <TouchableOpacity
-                style={[styles.botaoAtivo, styles.configBotaoAtivo]}
+                style={[styles.botaoAtivo, styles.configBotaoAtivo, enviado && styles.botaoDesativado]}
                 disabled={enviado}
                 onPress={tratarEnvio}
             >
