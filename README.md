@@ -78,4 +78,4 @@ const obterCorFundo = () => {
 -	Objetivo: evidenciar a diferença entre o comportamento do useState e do useRef.
 -	Enunciado: crie uma tela com dois botões: "Incrementar Estado" e "Incrementar Ref". Exiba na tela o valor do estado. O valor da Ref não deve ser exibido na tela diretamente através de texto, mas sim com um console.log() no terminal que diz: Valor atual da Ref: X. Adicione também um console.log("A tela renderizou!") no corpo do componente. A cor de fundo padrão da tela do aplicativo deve ser branca. Ao clicar no botão "Incrementar Estado", a cor de fundo da tela deve mudar para verde. Ao clicar no botão "Incrementar Ref" a cor de fundo da tela deve mudar para azul. Clique algumas vezes no botão da Ref e analise o terminal. Depois, clique algumas vezes no botão do Estado e observe o que acontece.
 -	OBS:
-  -	Este exercício serve para fixar o conceito de que alterar o .current é uma operação silenciosa na memória do celular.
+  --	Este exercício serve para fixar o conceito de que alterar o .current é uma operação silenciosa na memória do celular.
